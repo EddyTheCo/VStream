@@ -11,7 +11,8 @@ ApplicationWindow {
         id:control
         cache : false
         source: "image://wasm/"+VStreamer.source
-        anchors.fill: parent
+        width:300
+        height:300
 
         Button
         {
