@@ -23,18 +23,9 @@ void VStreamer::getCamera(void)
         for (const QCameraDevice &cameraDevice : cameras) {
             qDebug()<<"description:"<<cameraDevice.description()<<" "<<cameraDevice.id();
         }
-        m_camera=new QCamera(best,this);
-        auto bvF=best.videoFormats().at(0);
-        for (const QCameraFormat &format : best.videoFormats())
-        {
-            qDebug()<<"Cameras.format:"<<format.resolution()<<" "<<format.pixelFormat()<<" "<<format.maxFrameRate();
-            if(abs(format.resolution().width()*1.0-format.resolution().height())<abs(bvF.resolution().width()*1.0-bvF.resolution().height()))
-            {
-                bvF=format;
-            }
-        }
-        m_camera->setCameraFormat(bvF);
 
+        m_camera=new QCamera(QMediaDevices::defaultVideoInput() ,this);
+        qDebug()<<"camera description:"<<m_camera->cameraDevice().description()<<" "<<m_camera->cameraDevice().id();
     }
 
 }
