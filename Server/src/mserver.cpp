@@ -21,11 +21,7 @@ void VStreamer::getCamera(void)
     {
         QCameraDevice best=cameras.front();
         for (const QCameraDevice &cameraDevice : cameras) {
-
-            if (cameraDevice.position() == QCameraDevice::BackFace)
-            {
-                best=cameraDevice;
-            }
+            qDebug()<<"description:"<<cameraDevice.description()<<" "<<cameraDevice.id();
         }
         m_camera=new QCamera(best,this);
         auto bvF=best.videoFormats().at(0);

@@ -15,6 +15,18 @@ ApplicationWindow {
 
         Button
         {
+            anchors.right:  parent.right
+            anchors.top:  parent.top
+            anchors.margins: 20
+            text:"close"
+            onClicked:
+            {
+                window.close();
+            }
+        }
+
+        Button
+        {
             anchors.bottom: parent.bottom
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.margins: 20
