@@ -11,8 +11,7 @@ ApplicationWindow {
         id:control
         cache : false
         source: "image://wasm/"+VStreamer.source
-        width:300
-        height:300
+        anchors.fill:parent
 
         Button
         {
@@ -23,18 +22,6 @@ ApplicationWindow {
             onClicked:
             {
                 window.close();
-            }
-        }
-
-        Button
-        {
-            anchors.bottom: parent.bottom
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.margins: 20
-            text:"start"
-            onClicked:
-            {
-                VStreamer.start();
             }
         }
 

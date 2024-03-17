@@ -43,15 +43,17 @@ VStreamer::VStreamer(QObject *parent):QObject(parent),m_udpSocket(new QUdpSocket
     m_captureSession->setVideoOutput(m_videoSink);
     QObject::connect(m_videoSink,&QVideoSink::videoFrameChanged,this,[=](const QVideoFrame & Vframe)
                      {
-        qDebug()<<"videoFrameChanged";
+        qDebug()<<"videoFrameChanged:"<<m_camera->isActive()<<Vframe.isValid();
                          if(m_camera&&m_camera->isActive()&&Vframe.isValid()){
+
                              auto picture=Vframe.toImage();
+                             qDebug()<<"picture:"<<picture.format()<<" "<<picture.width()<<" "<<picture.height();
                              WasmImageProvider::img=picture;
                              setid();
                                  decodePicture(picture);
                          }
                      });
-
+    start();
 
 }
 
@@ -87,6 +89,7 @@ void VStreamer::start()
         {
             qDebug()<<"m_camera->start";
             m_camera->start();
+            qDebug()<<"m_camera->start";
         }
 
         return;
