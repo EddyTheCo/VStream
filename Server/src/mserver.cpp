@@ -53,7 +53,7 @@ VStreamer::VStreamer(QObject *parent):QObject(parent),m_udpSocket(new QUdpSocket
                                  decodePicture(picture);
                          }
                      });
-    //start();
+    start();
 
 }
 
